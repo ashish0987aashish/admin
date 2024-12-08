@@ -19,12 +19,13 @@ const fs = require('fs').promises;
 const Blog = require("./models/blog.model")
 
 const { error } = require("console");
+const { errorMonitor } = require("events");
 
 mongoose.connect(config.connectionString);
 const app = express();
 
 app.use(express.json());
-
+app.use(cors({ origin: "*" }));
 
 
 
@@ -73,9 +74,9 @@ app.post("/create-account", async (req, res) => {
     user: {
       fullName: user.fullName,
       email: user.email,
-      accessToken,
-      message: "Registraction Successful",
     },
+    accessToken,
+    message: "Registraction Successful"
   });
 });
 
