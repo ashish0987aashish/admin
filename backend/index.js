@@ -33,13 +33,24 @@ app.use(cors({ origin: "*" }));
 
 // Create Account
 app.post("/create-account", async (req, res) => {
-  const { fullName, email, password } = req.body;
+   
+   const creatorAccessToken = "lipumamu@385ls"
 
-  if (!fullName || !email || !password) {
+  const { fullName, email, password,creatorAccess } = req.body;
+
+  if (!fullName || !email || !password  || !creatorAccess) {
     return res.status(400).json({
       error: true,
       message: "All fields are required",
     });
+  }
+
+  if(creatorAccessToken !== creatorAccess){
+
+     return res.status(400).json({
+      error:true,
+      message:"Access Denied due to wrong CreatorAccessCode"
+     }) 
   }
 
   const isUser = await User.findOne({ email });

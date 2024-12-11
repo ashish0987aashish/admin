@@ -75,7 +75,7 @@ const Login = () => {
       
        <div className="flex justify-start items-center flex-col h-2/3">
        
-       <h1 className="text-4xl text-blue-600 text-center font-extrabold pb-7 ">My Website</h1>
+       <h1 className="text-4xl text-blue-600 text-center font-extrabold pb-7 bg-gradient-to-r from-blue-500 via-green-500 to-purple-500 bg-clip-text text-transparent">My Website</h1>
 
        <div className='w-96 h-72 bg-white shadow-2xl rounded-xl flex justify-around items-center flex-col'>
 
@@ -103,9 +103,9 @@ const Login = () => {
           setPassword(target.value)
         }}        />
 
-{error && <p className="text-red-500 text-sm py-2 font-bold">{error}</p>}
+{error && <p className="text-red-500 text-sm py-2">{error}</p>}
 
-      <button className='w-24 h-8 text-white bg-green-600 rounded-lg active:bg-green-200'>
+      <button className='w-24 h-8 text-white bg-green-600 rounded-lg active:scale-95'>
         login 
       </button>
 
@@ -118,7 +118,7 @@ const Login = () => {
           navigate("/signup")
          }}
         
-        className='text-center text-lg text-blue-900 underline cursor-pointer active:text-blue-600'>no account? signup</p>   
+        className='text-center text-lg text-blue-900 underline cursor-pointer active:text-blue-600 pb-4'>no account? signup</p>   
 
       </div>   
 

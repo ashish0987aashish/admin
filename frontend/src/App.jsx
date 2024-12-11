@@ -5,8 +5,8 @@ import React from "react"
 import Login from './pages/Auth/Login'
 import SignUp from './pages/Auth/SignUp'
 import Home from './pages/Home/Home'
-import Blog from './pages/Work/Blog'
-import Project from './pages/Work/Project'
+import Blog from './pages/Job/BLog/Blog'
+import Project from './pages/Job/Project/Project'
 
 
 
