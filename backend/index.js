@@ -155,6 +155,86 @@ app.get("/get-user", authenticateToken, async (req, res) => {
 
 
 
+// Get all Users 
+
+app.get("/get-all-users",authenticateToken,async(req,res)=>{
+
+   try{
+    const users = await User.find()
+    res.status(200).json({
+      users:users
+    })
+  }catch(error){
+      
+     res.status(500).json({
+         error:true,
+         message:error.message
+     })
+  }
+
+})
+
+
+
+// Delete a user 
+
+ app.delete("/delete-user/:id",authenticateToken,async(req,res)=>{
+
+      const {id} = req.params
+      
+      const access = "lipumamu@385rm"
+
+       
+      let {deleteAccess} = req.body
+        
+      if(!deleteAccess){
+
+         return res.status(400).json({
+          error:true,
+          message:"accesscode required "
+         })
+      }
+
+
+      if(deleteAccess !== access){
+        return res.status(400).json({
+             error:true,
+             message:"delete access denied due to wrong accesscode"
+         })          
+      }
+
+     
+
+    try{
+        const user = await User.findByIdAndDelete(id)
+   
+        if(!user){
+           
+            return res.status(404).json({
+              error:true,
+              message:"user not found"
+            })
+        }
+
+        res.status(200).json({
+          message:"user deleted successfully"
+        })
+
+    }catch(error){
+
+       console.error("some unexpected error occurred",error)
+        res.status(500).json({
+
+          error:true,
+          message:"internal server error"
+        })
+    }
+
+ })
+
+
+
+
            //Image Section
 
 // handle pimage upload
@@ -234,7 +314,7 @@ app.post("/add-project", authenticateToken, async (req, res) => {
   const { pTitle, pDesc, pImgs, fromDate, toDate } = req.body;
   let { fullName } = req.user;
   const creatortag = "(creator)"
-   fullName += creatortag
+  const pManagerName =   fullName + creatortag
 
   // validate required fields :
 
@@ -257,7 +337,7 @@ app.post("/add-project", authenticateToken, async (req, res) => {
       pImgs,
       fromDate: parsedfromDate,
       toDate: parsedtoDate,
-      fullName,
+      pManagerName,
     });
 
     await project.save();
@@ -329,7 +409,7 @@ app.put("/update-project/:id",authenticateToken,async(req,res)=>{
         project.pImgs = pImgs
         project.fromDate = fromDate
         project.toDate = toDate
-        project.fullName += ","+fullName+"(editor)"
+        project.pManagerName += ","+fullName+"(editor)"
 
         await project.save()  
         res.status(200).json({project:project,message:"Update Successful"})
@@ -424,7 +504,7 @@ app.post("/add-blog",authenticateToken,async(req,res)=>{
   const  {bTitle,bDesc,bImgs,postDate} = req.body 
   let {fullName} = req.user
   const writertag = "(writer)"
-  fullName += writertag
+  const bManagerName = fullName + writertag
 
 
   // validate required fields :
@@ -448,7 +528,7 @@ app.post("/add-blog",authenticateToken,async(req,res)=>{
       bDesc,
       bImgs,
       postDate:parsedpostDate,
-      fullName
+     bManagerName
     })
 
    await blog.save()
@@ -489,6 +569,7 @@ app.get("/get-all-blogs",async(req,res)=>{
 
 
 // edit blog details 
+
 app.put("/update-blog/:id",authenticateToken,async(req,res)=>{
         
   const {id} = req.params
@@ -523,7 +604,7 @@ app.put("/update-blog/:id",authenticateToken,async(req,res)=>{
       blog.bDesc = bDesc
       blog.bImgs = bImgs
       blog.postDate = parsedpostDate
-      blog.fullName += "," + fullName + "(editor)";
+      blog.bManagerName += "," + fullName + "(editor)";
 
       await blog.save()
 

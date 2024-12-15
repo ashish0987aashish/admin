@@ -8,7 +8,7 @@ const projectSchema = new Schema({
   pImgs: { type: [String], required: true },
   fromDate: { type: Date, required: true },
   toDate: { type: Date, required: true },
-  fullName: { type: String, required: true },
+  pManagerName: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Project",projectSchema)

@@ -7,7 +7,7 @@ const blogSchema = new Schema({
     bDesc:{type:String,required:true},
     bImgs:{type:[String],required:true},
     postDate:{type:Date,required:true},
-    fullName:{type:String,required:true}
+    bManagerName:{type:String,required:true}
 })
 
 

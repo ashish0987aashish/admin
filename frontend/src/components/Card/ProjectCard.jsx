@@ -13,15 +13,16 @@ const ProjectCard = ({
   pImgs,
   fromDate,
   toDate,
-  fullName
+  pManagerName,
+  onClick
 
 }) => {
   return (
-    <div className='w-1/3 h-2/3  border-slate-900 shadow-xl p-3 m-6 rounded-lg bg-blue-50 cursor-pointer hover:scale-105 duration-75 '>
+    <div className='w-1/3 h-2/3  border-slate-900 shadow-xl p-3 m-6 rounded-lg bg-blue-50 cursor-pointer hover:scale-105 duration-75 ' onClick={onClick}>
 
       <p  className='pb-2 text-base text-gray-700 flex items-center font-medium'>{fromDate ? moment(fromDate).format("Do MMM YYYY") : "_"}<FaLongArrowAltRight/>{toDate?moment(toDate).format("Do MMM YYYY"):"_"}</p>
 
-      <div className='image w-full h-2/3 bg-gray-900 flex'>
+      <div className='image w-full h-60 bg-gray-900 flex'>
 
         <div className='column1 h-full w-4/6 bg-slate-700 border-spacing-1 border-neutral-50 '>
           <img
@@ -62,19 +63,23 @@ const ProjectCard = ({
       </div>
 
       
-       <div className='ptitle text-xl font-semibold underline'>
-        <h1>{pTitle.toUpperCase()}</h1>
+       <div className='ptitle text-xl font-semibold underline '>
+        <h1
+         className='overflow-hidden truncate pr-9'
+        >{pTitle.toUpperCase()}</h1>
        </div>
 
-       <div className="pDesc w-full h-16 overflow-hidden">
-         <p> {pDesc.substring(0, 110)}......
+       <div className="pDesc w-full h-16 overflow-hidden max-lines-2">
+         <p> {pDesc.substring(0, 90)}...
         </p>  
       </div>   
    
 
-       <div className='fullName  w-full h-10 overflow-hidden text-sm  pt-3 flex justify-start items-center gap-2'>
-          <MdEdit/>
-          {fullName}
+       <div className='fullName  w-full h-10 text-sm  pt-3 flex justify-start items-center gap-1 truncate'>
+          <MdEdit className='w-12'/>
+          <p
+           className='overflow-y-scroll truncate w-3/4'
+          >{pManagerName}</p>
        </div>
         
 

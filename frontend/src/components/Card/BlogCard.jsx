@@ -8,11 +8,12 @@ const BlogCard = ({
   bDesc,
   bImgs,
   postDate,
-  fullName
+  bManagerName,
+  onReadMore
 
 }) => {
   return (
-    <div className='w-5/6 h-96 border shadow-lg mb-10 rounded-lg overflow-hidden p-3 flex bg-blue-50 hover:scale-105 duration-75'>
+    <div className='w-11/12 h-96 border shadow-lg mb-10 rounded-xl overflow-hidden p-5 flex bg-blue-50 hover:shadow-2xl'>
 
       <div className='w-1/3 h-full bg-slate-600'>
 
@@ -63,7 +64,7 @@ const BlogCard = ({
           </div>
 
           <div className="pDesc text-xl font-normal w-full h-60 overflow-hidden">
-            <p> {bDesc.substring(0, 465)}......
+            <p> {bDesc.substring(0, 400)}......
             </p>
           </div>
 
@@ -73,12 +74,14 @@ const BlogCard = ({
             <div className='w-2/3 h-full overflow-hidden text-sm flex justify-start items-center gap-1 truncate'>
 
               <MdEdit />
-              {fullName}
+              {bManagerName}
             </div>
 
             <div className='w-1/3 flex justify-center items-center text-lg'>
 
-              <button className='w-40 h-10 text-white rounded-lg flex justify-center items-center gap-2  bg-gradient-to-r  from-purple-500  to-blue-500 hover:bg-gradient-to-l active:scale-95'>
+              <button className='w-40 h-10 text-white rounded-lg flex justify-center items-center gap-2  bg-gradient-to-r  from-purple-500  to-blue-500 hover:bg-gradient-to-l active:scale-95'
+                onClick={onReadMore}
+              >
                read more
                <FaLongArrowAltRight/>
               </button>
