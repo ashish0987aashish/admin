@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import axiosInstance from '../../utils/axiosinstance'
 import { useNavigate } from 'react-router-dom'
@@ -8,9 +8,11 @@ import { MdHome, MdBook, MdPerson } from 'react-icons/md';
 
 
 
-
-
 const Home = () => {
+
+   
+   const nav = useRef() 
+
 
   const navigate = useNavigate();
 
