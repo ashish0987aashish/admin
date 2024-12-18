@@ -245,7 +245,7 @@ app.post("/image-upload", upload.single("image"), async (req, res) => {
         .status(400)
         .json({ error: true, message: "no image uploaded" });
     }
-    const path = `http://localhost:1000/uploads/`
+    const path = `https://admin-backend-q2j4.onrender.com/uploads/`
 
     // const pImgArr = []
     const pimageUrl = path+`${req.file.filename}`
