@@ -45,7 +45,7 @@ const BlogCard = ({
             />
 
             <div className="absolute w-full h-full top-0 left-0 text-white text-3xl bg-gradient-to-b from-black to-slate-800 opacity-65  flex justify-center items-center">
-              <p className=''>+{bImgs.length - 2}</p>
+               { bImgs.length > 3 &&   <p className=''>+{bImgs.length - 2}</p>  } 
             </div>
           </div>
 
