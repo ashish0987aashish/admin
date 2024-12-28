@@ -17,7 +17,7 @@ const BlogCard = ({
 
       <div className='w-1/3 h-full bg-slate-600'>
 
-        <div className="row1 w-full h-2/3 bg-red-300">
+        <div className="row1 w-full h-2/3 bg-gradient-to-b from-black to-slate-800 opacity-65">
           <img
             src={bImgs[bImgs.length - 1]}
             alt="img"
@@ -27,7 +27,7 @@ const BlogCard = ({
 
         <div className="row2 h-1/3 flex">
 
-          <div className="col1 w-1/2 h-full bg-green-300">
+          <div className="col1 w-1/2 h-full bg-gradient-to-b from-black to-slate-800 opacity-65">
             <img
               src={bImgs[bImgs.length - 2]}
               alt="img"
@@ -36,7 +36,7 @@ const BlogCard = ({
 
           </div>
 
-          <div className="col2 w-1/2 h-full bg-blue-300 relative">
+          <div className="col2 w-1/2 h-full bg-gradient-to-b from-black to-slate-800 opacity-65 relative">
 
             <img
               src={bImgs[bImgs.length - 3]}
