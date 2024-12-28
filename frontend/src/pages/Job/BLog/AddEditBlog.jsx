@@ -123,11 +123,6 @@ const AddEditBlog = (
         return
       }
 
-      if(bImgs.length<3){
-        setError("atleast 3 images needed")
-        return
-      }
-
       if(!postDate){
         setError("please select the date")
         return
